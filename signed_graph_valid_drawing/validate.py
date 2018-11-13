@@ -1,6 +1,11 @@
 import networkx as nx
 
 
+def _squared_euclidean_distance(v1, v2):
+    assert len(v1) == len(v2)
+    return sum((v1[i]-v2[i])**2 for i in range(len(v1)))
+
+
 def is_complete_signed_graph(graph):
     """ Checks if a graph is a complete signed graph.
 
@@ -32,7 +37,6 @@ def is_embedded(graph, dimension):
         (2) Each node must have a tuple (embedding).
         (3) The length of each tuple must be the dimension.
     """
-    print(graph.nodes)
     if not is_complete_signed_graph(graph):
         return False
     for node in graph.nodes:
@@ -53,5 +57,25 @@ def is_valid_embedded(graph, dimension):
     An embedding is valid if, for every node, all its friends are closer
         than all its enemies.
     """
-    return None
+    if not is_embedded(graph, dimension):
+        return False
+    for node in graph.nodes:
+        positive_distances = []
+        negative_distances = []
+        # record the distances
+        for neighbor in graph.nodes:
+            if node != neighbor:
+                distance = _squared_euclidean_distance(graph.nodes[node]['embedding'], graph.nodes[neighbor]['embedding'])
+                if graph[node][neighbor]['sign'] == 1:
+                    positive_distances.append(distance)
+                else:
+                    negative_distances.append(distance)
+        # check the conditions
+        if len(positive_distances) == 0 or len(negative_distances) == 0:
+            continue
+        elif max(positive_distances) < min(negative_distances):
+            continue
+        else:
+            return False
+    return True
 
