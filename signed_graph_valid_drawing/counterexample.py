@@ -14,4 +14,5 @@ graph.nodes[4]['embedding'] = (0, 0, np.sqrt(2)-1/8, -1/4)
 graph.nodes[5]['embedding'] = (0, 0, -np.sqrt(2)+1/8, -1/4)
 graph.nodes[6]['embedding'] = (0, 0, 0, np.sqrt(2)-1/8)
 
+# expected result: True
 print(is_valid_embedded(graph, 4))
