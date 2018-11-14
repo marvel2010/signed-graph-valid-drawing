@@ -49,7 +49,8 @@ for graph_number in range(GRAPH_COUNT):
     # analyze the graph
     print("Graph Number", graph_number)
     signed_graph = from_positive_subgraph(positive_graph)
-    print("Find Embedding", find_embedding(signed_graph, EMBEDDING_DIMENSION))
+    embedding_objective = find_embedding(signed_graph, EMBEDDING_DIMENSION)
+    print("Find Embedding", embedding_objective)
     print()
 
 
