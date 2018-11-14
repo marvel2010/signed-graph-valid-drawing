@@ -16,10 +16,15 @@ from signed_graph_valid_drawing.embed import find_embedding
     #     print(g.adjacency_matrix())
     #     print('')
 
-NODE_COUNT = 7
+# NODE_COUNT = 7
+# EMBEDDING_DIMENSION = 4
+# GRAPH_COUNT = 1044
+# FILE = '../data/7.txt'
+
+NODE_COUNT = 8
 EMBEDDING_DIMENSION = 4
-GRAPH_COUNT = 1044
-FILE = '../data/7.txt'
+GRAPH_COUNT = 12346
+FILE = '../data/8.txt'
 
 f = open(FILE)
 
