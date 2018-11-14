@@ -46,12 +46,19 @@ for graph_number in range(GRAPH_COUNT):
     if len(positive_graph.edges) == NODE_COUNT * (NODE_COUNT - 1) / 2:
         continue
 
+    # # special skips
+    # if graph_number not in repeat_list:
+    #     continue
+
     # analyze the graph
-    print("Graph Number", graph_number)
     signed_graph = from_positive_subgraph(positive_graph)
     embedding_objective = find_embedding(signed_graph, EMBEDDING_DIMENSION)
-    print("Find Embedding", embedding_objective)
-    print()
+    if embedding_objective == 0.0:
+        print("Embedding Found for Graph ", graph_number)
+    elif embedding_objective > 0.0:
+        print("No Embedding Found for Graph", graph_number)
+    else:
+        print("Error")
 
 
 print("Disconnected Count", disconnected_count)
