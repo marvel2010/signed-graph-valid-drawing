@@ -46,7 +46,7 @@ def find_embedding(graph, dimension):
     obj = sum(graph.nodes[node]['objective_penalty_variable'] for node in graph.nodes)
 
     # optimizer
-    opt = tf.train.GradientDescentOptimizer(0.1).minimize(obj)
+    opt = tf.train.AdamOptimizer(1.0).minimize(obj)
 
     # session
     sess = tf.Session()
@@ -56,7 +56,7 @@ def find_embedding(graph, dimension):
     sess.run(init)
 
     # optimize
-    for step in range(100):
+    for step in range(1000):
         if sess.run(obj) == 0.0:
             break
         sess.run(opt)
