@@ -4,13 +4,14 @@ import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 
 
-def find_embedding(graph, dimension):
+def find_embedding(graph, dimension, max_steps=1000):
     """Tries to embed given graph in given dimension.
 
     Args:
         graph: the graph, in which every edge is assumed to have a 'sign'
             which is either +1 or -1.
         dimension: the dimension in which to try embedding the graph.
+        max_steps: the maximum number of gradient steps to perform.
 
     Returns:
         obj: The value of the objective function, which will be 0.0 if
@@ -69,7 +70,7 @@ def find_embedding(graph, dimension):
     sess.run(init)
 
     # optimize
-    for step in range(1000):
+    for step in range(max_steps):
         if sess.run(obj) == 0.0:
             break
         sess.run(opt)
