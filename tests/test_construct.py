@@ -1,8 +1,8 @@
 import networkx as nx
+from sgvd.construct import from_positive_subgraph
 
 
 def test_construct_simple():
-    from signed_graph_valid_drawing.construct import from_positive_subgraph
     positive_subgraph = nx.generators.classic.path_graph(3)
     assert len(positive_subgraph.nodes) == 3
     assert len(positive_subgraph.edges) == 2

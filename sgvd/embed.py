@@ -1,8 +1,21 @@
-import tensorflow as tf
+"""Embedding with Tensorflow1"""
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 def find_embedding(graph, dimension):
-    """ Tries to embed given graph in given dimension. """
+    """Tries to embed given graph in given dimension.
+
+    Args:
+        graph: the graph, in which every edge is assumed to have a 'sign'
+            which is either +1 or -1.
+        dimension: the dimension in which to try embedding the graph.
+
+    Returns:
+        obj: The value of the objective function, which will be 0.0 if
+            the embedding succeeds and strictly positive, otherwise.
+    """
 
     # make sure that no variables carry over between embeddings
     tf.reset_default_graph()
@@ -19,7 +32,7 @@ def find_embedding(graph, dimension):
             graph.nodes[edge[0]]['embedding_variable'] - graph.nodes[edge[1]]['embedding_variable']
         )
 
-    # 3*n variables
+    # 3n variables
     #  n friend variables
     #  n enemies variables
     #  n objective variables

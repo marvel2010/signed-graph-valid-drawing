@@ -1,30 +1,12 @@
 import networkx as nx
 import numpy as np
-from signed_graph_valid_drawing.construct import from_positive_subgraph
-from signed_graph_valid_drawing.embed import find_embedding
+from sgvd.construct import from_positive_subgraph
+from sgvd.embed import find_embedding
 
-# iterate over all graphs with $n$ nodes
-    # Connected: http://oeis.org/A001349
-    # Any: http://oeis.org/A000088
-
-# in sage:
-    # http://doc.sagemath.org/html/en/reference/graphs/sage/graphs/graph.html#generators
-    # https://sage.math.leidenuniv.nl/src/graphs/graph.py
-
-# https://sagecell.sagemath.org/
-    # for g in graphs(n):
-    #     print(g.adjacency_matrix())
-    #     print('')
-
-# NODE_COUNT = 7
-# EMBEDDING_DIMENSION = 4
-# GRAPH_COUNT = 1044
-# FILE = '../data/7.txt'
-
-NODE_COUNT = 8
+NODE_COUNT = 7
 EMBEDDING_DIMENSION = 4
-GRAPH_COUNT = 12346
-FILE = '../data/8.txt'
+GRAPH_COUNT = 1044
+FILE = '../data/7.txt'
 
 f = open(FILE)
 

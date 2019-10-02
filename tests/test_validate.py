@@ -1,5 +1,8 @@
 import networkx as nx
 import pytest
+from sgvd.validate import is_complete_signed_graph
+from sgvd.validate import is_embedded
+from sgvd.validate import is_valid_embedded
 
 
 @pytest.fixture
@@ -44,46 +47,37 @@ def graph_embedded_expanded(graph_embedded):
 
 
 def test_too_few_edges(graph_with_too_few_edges):
-    from signed_graph_valid_drawing.validate import is_complete_signed_graph
     assert not is_complete_signed_graph(graph_with_too_few_edges)
 
 
 def test_missing_signs(graph_missing_signs):
-    from signed_graph_valid_drawing.validate import is_complete_signed_graph
     assert not is_complete_signed_graph(graph_missing_signs)
 
 
 def test_graph_signed(graph_signed):
-    from signed_graph_valid_drawing.validate import is_complete_signed_graph
     assert is_complete_signed_graph(graph_signed)
 
 
 def test_signed_graph_not_embedded(graph_signed):
-    from signed_graph_valid_drawing.validate import is_embedded
     assert not is_embedded(graph_signed, 3)
 
 
 def test_embedded_graph_wrong_dimension(graph_embedded):
-    from signed_graph_valid_drawing.validate import is_embedded
     assert not is_embedded(graph_embedded, 2)
     assert not is_embedded(graph_embedded, 4)
 
 
 def test_embedded_graph_correct_dimension(graph_embedded):
-    from signed_graph_valid_drawing.validate import is_embedded
     assert is_embedded(graph_embedded, 3)
 
 
 def test_embedding_fails_at_equality(graph_embedded):
-    from signed_graph_valid_drawing.validate import is_valid_embedded
     assert not is_valid_embedded(graph_embedded, 3)
 
 
 def test_embedding_fails_at_invalid(graph_embedded_expanded):
-    from signed_graph_valid_drawing.validate import is_valid_embedded
     assert not is_valid_embedded(graph_embedded_expanded, 3)
 
 
 def test_embedding_passes_at_valid(graph_embedded_contracted):
-    from signed_graph_valid_drawing.validate import is_valid_embedded
     assert is_valid_embedded(graph_embedded_contracted, 3)

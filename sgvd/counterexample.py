@@ -1,7 +1,8 @@
+"""Showing that the graph K_{4, 3} can be embedded in R^4."""
 import numpy as np
 import networkx as nx
-from signed_graph_valid_drawing.construct import from_positive_subgraph
-from signed_graph_valid_drawing.validate import is_valid_embedded
+from sgvd.construct import from_positive_subgraph
+from sgvd.validate import is_valid_embedded
 
 graph = from_positive_subgraph(nx.algorithms.bipartite.generators.complete_bipartite_graph(4, 3))
 

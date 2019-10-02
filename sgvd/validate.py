@@ -7,7 +7,7 @@ def _squared_euclidean_distance(v1, v2):
 
 
 def is_complete_signed_graph(graph):
-    """ Checks if a graph is a complete signed graph.
+    """Checks if a graph is a complete signed graph.
 
     Checks the following:
         (1) Must be a NetworkX Graph.
@@ -30,7 +30,7 @@ def is_complete_signed_graph(graph):
 
 
 def is_embedded(graph, dimension):
-    """ Checks if the graph is embedded in some dimension.
+    """Checks if the graph is embedded in some dimension.
 
     Checks the following:
         (1) Must be a Complete Signed Graph.
@@ -48,10 +48,10 @@ def is_embedded(graph, dimension):
 
 
 def is_valid_embedded(graph, dimension):
-    """ Checks if the graph is valid embedded in some dimension.
+    """Checks if the graph is valid embedded in some dimension.
 
     Checks the following:
-        (1) Must be an Embedded Signed Graph.
+        (1) Must be an Embedded Signed Graph (see is_embedded).
         (2) Embedding must be Valid.
 
     An embedding is valid if, for every node, all its friends are closer
