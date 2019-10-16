@@ -6,7 +6,7 @@ K_7,7: Embedding found in Dimension 10
 K_8,8: Embedding found in Dimension 11
 K_9,9: Embedding found in Dimension 13
 K_10,10: Embedding found in Dimension 14
-K_11,11: ?
+K_11,11: Embedding found in Dimension 16
 K_12,12: ?
 K_13,13: ?
 K_14,14: ?

@@ -2,7 +2,6 @@ import networkx as nx
 from sgvd.construct import from_positive_subgraph
 from sgvd.embed import find_embedding
 
-MAX_K = 10
 DIMENSION_BY_K = {
     4: 5,
     5: 7,
@@ -11,9 +10,15 @@ DIMENSION_BY_K = {
     8: 11,
     9: 13,
     10: 14,
+    11: 16,
+    12: 18,
+    13: 20,
+    14: 21,
+    15: 23,
 }
+K_TO_TEST = [12, 13, 14, 15]
 
-for k in [10]:
+for k in K_TO_TEST:
     signed_graph = from_positive_subgraph(
         nx.algorithms.bipartite.generators.complete_bipartite_graph(k, k)
     )
