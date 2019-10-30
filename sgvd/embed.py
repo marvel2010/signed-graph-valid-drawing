@@ -60,7 +60,7 @@ def find_embedding(graph, dimension, max_steps=1000):
     obj = sum(graph.nodes[node]['objective_penalty_variable'] for node in graph.nodes)
 
     # optimizer
-    opt = tf.train.AdamOptimizer(1.0).minimize(obj)
+    opt = tf.train.AdamOptimizer(1.0/dimension).minimize(obj)
 
     # session
     sess = tf.Session()
@@ -71,6 +71,8 @@ def find_embedding(graph, dimension, max_steps=1000):
 
     # optimize
     for step in range(max_steps):
+        # if step % (max_steps // 10) == 0:
+        #     print("objective after %s steps is %s" % (step, sess.run(obj)))
         if sess.run(obj) == 0.0:
             break
         sess.run(opt)
